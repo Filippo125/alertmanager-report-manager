@@ -96,3 +96,59 @@ Many alerts are too minor to require immediate action, yet become significant wh
 AlertManager Report Manager helps teams identify these patterns and convert operational noise into actionable information.
 
 > A single alert may be noise. The same alert occurring 100 times in a week is a problem worth investigating.
+
+## Development
+
+The project uses a minimal Python package layout while the application architecture is still being defined.
+
+```text
+docs/                             Markdown documentation
+src/alertmanager_report_manager/  Python package
+tests/                            pytest test suite
+```
+
+Requirements:
+
+* Python 3.11 or newer
+
+Create a local environment and install development dependencies:
+
+```shell
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -e ".[dev]"
+```
+
+Run the test suite:
+
+```shell
+python -m pytest
+```
+
+Run linting and formatting:
+
+```shell
+python -m ruff check .
+python -m ruff format .
+```
+
+Initialize a local SQLite database:
+
+```shell
+alertmanager-report-manager init-db data/alerts.db
+```
+
+Build the runtime container image:
+
+```shell
+docker build -t alertmanager-report-manager .
+```
+
+Run the containerized CLI:
+
+```shell
+docker run --rm alertmanager-report-manager --help
+```
+
+Project documentation starts in [`docs/index.md`](docs/index.md).
