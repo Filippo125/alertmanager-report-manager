@@ -1,0 +1,81 @@
+{
+  "receiver": "team-platform-webhook",
+  "status": "firing",
+  "alerts": [
+    {
+      "status": "firing",
+      "labels": {
+        "alertname": "QueueBacklogHigh",
+        "severity": "warning",
+        "team": "platform",
+        "service": "job-runner",
+        "category": "latency",
+        "criticality": "tier2",
+        "ticket_policy": "repetitive",
+        "environment": "test",
+        "instance": "worker-1.example.invalid",
+        "queue": "email-delivery"
+      },
+      "annotations": {
+        "summary": "Queue backlog is above threshold",
+        "description": "The email-delivery queue has remained above the configured backlog threshold.",
+        "runbook_url": "https://runbooks.example.invalid/alerts/queue-backlog-high",
+        "dashboard_url": "https://grafana.example.invalid/d/queue-health"
+      },
+      "startsAt": "2026-05-31T10:15:00Z",
+      "endsAt": "0001-01-01T00:00:00Z",
+      "generatorURL": "https://prometheus.example.invalid/graph?g0.expr=queue_depth",
+      "fingerprint": "a4efec82be351b8d"
+    },
+    {
+      "status": "firing",
+      "labels": {
+        "alertname": "QueueBacklogHigh",
+        "severity": "warning",
+        "team": "platform",
+        "service": "job-runner",
+        "category": "latency",
+        "criticality": "tier2",
+        "ticket_policy": "repetitive",
+        "environment": "test",
+        "instance": "worker-2.example.invalid",
+        "queue": "email-delivery"
+      },
+      "annotations": {
+        "summary": "Queue backlog is above threshold",
+        "description": "A second worker has also crossed the configured backlog threshold.",
+        "runbook_url": "https://runbooks.example.invalid/alerts/queue-backlog-high",
+        "dashboard_url": "https://grafana.example.invalid/d/queue-health"
+      },
+      "startsAt": "2026-05-31T10:17:00Z",
+      "endsAt": "0001-01-01T00:00:00Z",
+      "generatorURL": "https://prometheus.example.invalid/graph?g0.expr=queue_depth",
+      "fingerprint": "d0ad3a153cb673ce"
+    }
+  ],
+  "groupLabels": {
+    "alertname": "QueueBacklogHigh",
+    "service": "job-runner"
+  },
+  "commonLabels": {
+    "alertname": "QueueBacklogHigh",
+    "severity": "warning",
+    "team": "platform",
+    "service": "job-runner",
+    "category": "latency",
+    "criticality": "tier2",
+    "ticket_policy": "repetitive",
+    "environment": "test",
+    "queue": "email-delivery"
+  },
+  "commonAnnotations": {
+    "summary": "Queue backlog is above threshold",
+    "description": "The email-delivery queue has remained above the configured backlog threshold.",
+    "runbook_url": "https://runbooks.example.invalid/alerts/queue-backlog-high",
+    "dashboard_url": "https://grafana.example.invalid/d/queue-health"
+  },
+  "externalURL": "https://alertmanager.example.invalid",
+  "version": "4",
+  "groupKey": "{}:{alertname=\"QueueBacklogHigh\", service=\"job-runner\"}",
+  "truncatedAlerts": 0
+}

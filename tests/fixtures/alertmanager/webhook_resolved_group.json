@@ -1,0 +1,81 @@
+{
+  "receiver": "team-checkout-webhook",
+  "status": "resolved",
+  "alerts": [
+    {
+      "status": "resolved",
+      "labels": {
+        "alertname": "HighErrorRate",
+        "severity": "critical",
+        "team": "checkout",
+        "service": "checkout-api",
+        "category": "availability",
+        "criticality": "tier1",
+        "ticket_policy": "immediate",
+        "environment": "test",
+        "instance": "checkout-api-1.example.invalid",
+        "route": "/api/checkout"
+      },
+      "annotations": {
+        "summary": "HTTP error rate is above threshold",
+        "description": "The checkout API error rate exceeded the configured threshold.",
+        "runbook_url": "https://runbooks.example.invalid/alerts/high-error-rate",
+        "dashboard_url": "https://grafana.example.invalid/d/service-errors"
+      },
+      "startsAt": "2026-05-31T09:04:00Z",
+      "endsAt": "2026-05-31T09:22:10Z",
+      "generatorURL": "https://prometheus.example.invalid/graph?g0.expr=rate_http_requests_errors",
+      "fingerprint": "eb423c9ff826f43e"
+    },
+    {
+      "status": "resolved",
+      "labels": {
+        "alertname": "HighErrorRate",
+        "severity": "critical",
+        "team": "checkout",
+        "service": "checkout-api",
+        "category": "availability",
+        "criticality": "tier1",
+        "ticket_policy": "immediate",
+        "environment": "test",
+        "instance": "checkout-api-2.example.invalid",
+        "route": "/api/checkout"
+      },
+      "annotations": {
+        "summary": "HTTP error rate is above threshold",
+        "description": "The checkout API error rate exceeded the configured threshold.",
+        "runbook_url": "https://runbooks.example.invalid/alerts/high-error-rate",
+        "dashboard_url": "https://grafana.example.invalid/d/service-errors"
+      },
+      "startsAt": "2026-05-31T09:05:00Z",
+      "endsAt": "2026-05-31T09:21:30Z",
+      "generatorURL": "https://prometheus.example.invalid/graph?g0.expr=rate_http_requests_errors",
+      "fingerprint": "fbad4e9e3aa01ac0"
+    }
+  ],
+  "groupLabels": {
+    "alertname": "HighErrorRate",
+    "service": "checkout-api"
+  },
+  "commonLabels": {
+    "alertname": "HighErrorRate",
+    "severity": "critical",
+    "team": "checkout",
+    "service": "checkout-api",
+    "category": "availability",
+    "criticality": "tier1",
+    "ticket_policy": "immediate",
+    "environment": "test",
+    "route": "/api/checkout"
+  },
+  "commonAnnotations": {
+    "summary": "HTTP error rate is above threshold",
+    "description": "The checkout API error rate exceeded the configured threshold.",
+    "runbook_url": "https://runbooks.example.invalid/alerts/high-error-rate",
+    "dashboard_url": "https://grafana.example.invalid/d/service-errors"
+  },
+  "externalURL": "https://alertmanager.example.invalid",
+  "version": "4",
+  "groupKey": "{}:{alertname=\"HighErrorRate\", service=\"checkout-api\"}",
+  "truncatedAlerts": 0
+}
