@@ -1,0 +1,80 @@
+{
+  "receiver": "team-platform-webhook",
+  "status": "firing",
+  "alerts": [
+    {
+      "status": "firing",
+      "labels": {
+        "alertname": "DiskSpaceLow",
+        "severity": "warning",
+        "team": "platform",
+        "service": "billing-api",
+        "category": "capacity",
+        "criticality": "tier2",
+        "ticket_policy": "repetitive",
+        "environment": "test",
+        "instance": "db-node-1.example.invalid",
+        "mountpoint": "/var/lib/app"
+      },
+      "annotations": {
+        "summary": "Disk usage is above 85 percent",
+        "description": "Filesystem /var/lib/app on db-node-1.example.invalid has sustained high usage.",
+        "runbook_url": "https://runbooks.example.invalid/alerts/disk-space-low",
+        "dashboard_url": "https://grafana.example.invalid/d/disk-capacity"
+      },
+      "startsAt": "2026-05-31T08:10:00Z",
+      "endsAt": "0001-01-01T00:00:00Z",
+      "generatorURL": "https://prometheus.example.invalid/graph?g0.expr=node_filesystem_avail_bytes",
+      "fingerprint": "d7f0e32a6fd7c1a1"
+    },
+    {
+      "status": "firing",
+      "labels": {
+        "alertname": "DiskSpaceLow",
+        "severity": "warning",
+        "team": "platform",
+        "service": "billing-api",
+        "category": "capacity",
+        "criticality": "tier2",
+        "ticket_policy": "repetitive",
+        "environment": "test",
+        "instance": "db-node-2.example.invalid",
+        "mountpoint": "/var/lib/app"
+      },
+      "annotations": {
+        "summary": "Disk usage is above 85 percent",
+        "description": "Filesystem /var/lib/app on db-node-2.example.invalid has sustained high usage.",
+        "runbook_url": "https://runbooks.example.invalid/alerts/disk-space-low",
+        "dashboard_url": "https://grafana.example.invalid/d/disk-capacity"
+      },
+      "startsAt": "2026-05-31T08:12:00Z",
+      "endsAt": "0001-01-01T00:00:00Z",
+      "generatorURL": "https://prometheus.example.invalid/graph?g0.expr=node_filesystem_avail_bytes",
+      "fingerprint": "88f62df5a09ef77b"
+    }
+  ],
+  "groupLabels": {
+    "alertname": "DiskSpaceLow",
+    "service": "billing-api"
+  },
+  "commonLabels": {
+    "alertname": "DiskSpaceLow",
+    "severity": "warning",
+    "team": "platform",
+    "service": "billing-api",
+    "category": "capacity",
+    "criticality": "tier2",
+    "ticket_policy": "repetitive",
+    "environment": "test",
+    "mountpoint": "/var/lib/app"
+  },
+  "commonAnnotations": {
+    "summary": "Disk usage is above 85 percent",
+    "runbook_url": "https://runbooks.example.invalid/alerts/disk-space-low",
+    "dashboard_url": "https://grafana.example.invalid/d/disk-capacity"
+  },
+  "externalURL": "https://alertmanager.example.invalid",
+  "version": "4",
+  "groupKey": "{}:{alertname=\"DiskSpaceLow\", service=\"billing-api\"}",
+  "truncatedAlerts": 0
+}

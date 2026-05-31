@@ -6,5 +6,6 @@ The documentation is kept as plain Markdown for now to avoid introducing a docum
 
 ## Sections
 
+* [Alertmanager Webhook Payloads](alertmanager-webhook-payloads.md)
 * [Architecture](architecture.md)
 * [Database](database.md)

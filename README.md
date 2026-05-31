@@ -105,6 +105,7 @@ The project uses a minimal Python package layout while the application architect
 docs/                             Markdown documentation
 src/alertmanager_report_manager/  Python package
 tests/                            pytest test suite
+tests/fixtures/alertmanager/      Reusable Alertmanager webhook payload samples
 ```
 
 Requirements:
@@ -152,3 +153,7 @@ docker run --rm alertmanager-report-manager --help
 ```
 
 Project documentation starts in [`docs/index.md`](docs/index.md).
+
+Reusable Alertmanager webhook payload samples live in
+[`tests/fixtures/alertmanager`](tests/fixtures/alertmanager). The supported payload shape is
+documented in [`docs/alertmanager-webhook-payloads.md`](docs/alertmanager-webhook-payloads.md).
