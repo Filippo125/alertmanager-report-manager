@@ -23,8 +23,8 @@ customer names, secrets, hostnames, or incident details.
 
 ## Supported Payload Shape
 
-The initial ingestion and storage work should assume the standard JSON webhook shape represented by
-the fixtures:
+The ingestion and storage work should assume the standard JSON webhook shape represented by the
+fixtures:
 
 * `receiver`: Alertmanager receiver name.
 * `status`: group status, currently `firing` or `resolved`.
@@ -69,5 +69,5 @@ The current fixtures do not define behavior for:
 * Interpreting annotation URLs beyond storing and reporting them as annotation values.
 * Rendering Alertmanager templates embedded in labels or annotations.
 
-Future ingestion code should preserve the original webhook payload even when only a subset of fields
-is normalized for reporting.
+The ingestion interface rejects malformed JSON bodies and preserves the original decoded webhook
+payload for downstream persistence even when only a subset of fields is normalized for reporting.
