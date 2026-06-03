@@ -16,13 +16,13 @@ Use this file as guidance for coding agents working in this project.
 - Primary language: Python.
 - Python is preferred because the project needs strong data manipulation, alert aggregation, and HTML/PDF report generation capabilities.
 - Runtime version: Python 3.11 or newer.
-- Web framework: TBD.
+- Web framework: FastAPI for HTTP/API adapters, served by Uvicorn in local and container runtime usage.
 - Database layer: SQLite via the Python standard library for the initial foundation.
 - Package manager: standard `pip` editable install for now.
 - Test command: `python -m pytest`.
 - Format/lint command: `python -m ruff check .` and `python -m ruff format .`.
 
-Do not introduce a Python framework or reporting library until the project has a concrete implementation need. When choosing one, prefer mature, well-maintained libraries that keep deployment and operations simple.
+Do not introduce additional Python frameworks or reporting libraries until the project has a concrete implementation need. Prefer mature, well-maintained libraries that keep deployment and operations simple.
 
 ## Working Principles
 
@@ -38,6 +38,7 @@ Do not introduce a Python framework or reporting library until the project has a
 When implementation starts, favor a structure that keeps these concerns separate:
 
 - Webhook ingestion and validation.
+- FastAPI route adapters and dependency wiring.
 - Historical persistence.
 - Alert normalization and classification.
 - Report query logic.

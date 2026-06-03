@@ -2,9 +2,13 @@
 
 from __future__ import annotations
 
+import json
 import sqlite3
 from importlib import resources
 from pathlib import Path
+from typing import Any
+
+from alertmanager_report_manager.ingestion import AlertmanagerWebhook
 
 SCHEMA_VERSION = 1
 
@@ -32,3 +36,52 @@ def get_schema_version(connection: sqlite3.Connection) -> int:
     """Return the latest applied schema version."""
     row = connection.execute("SELECT MAX(version) AS version FROM schema_migrations").fetchone()
     return int(row["version"])
+
+
+def store_alertmanager_webhook(
+    connection: sqlite3.Connection,
+    webhook: AlertmanagerWebhook,
+) -> tuple[int, ...]:
+    """Store each alert from a validated Alertmanager webhook as an event row."""
+    payload_json = _dump_json(webhook.original_payload)
+    event_ids: list[int] = []
+
+    for alert in webhook.alerts:
+        cursor = connection.execute(
+            """
+            INSERT INTO alert_events (
+              fingerprint,
+              status,
+              starts_at,
+              ends_at,
+              generator_url,
+              receiver,
+              group_key,
+              truncated_alerts,
+              labels_json,
+              annotations_json,
+              payload_json
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            (
+                alert.fingerprint,
+                alert.status,
+                alert.starts_at,
+                alert.ends_at,
+                alert.generator_url,
+                webhook.receiver,
+                webhook.group_key,
+                webhook.truncated_alerts,
+                _dump_json(alert.labels),
+                _dump_json(alert.annotations),
+                payload_json,
+            ),
+        )
+        event_ids.append(int(cursor.lastrowid))
+
+    return tuple(event_ids)
+
+
+def _dump_json(value: Any) -> str:
+    return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"))

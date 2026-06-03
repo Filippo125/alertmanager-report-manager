@@ -100,6 +100,8 @@ AlertManager Report Manager helps teams identify these patterns and convert oper
 ## Development
 
 The project uses a minimal Python package layout while the application architecture is still being defined.
+FastAPI is selected as the web framework for future HTTP/API adapters, with Uvicorn as the default
+ASGI server for local and container runtime usage.
 
 ```text
 docs/                             Markdown documentation
@@ -121,6 +123,12 @@ python -m pip install --upgrade pip
 python -m pip install -e ".[dev]"
 ```
 
+Install the optional ASGI server dependency when working on HTTP entry points:
+
+```shell
+python -m pip install -e ".[dev,web]"
+```
+
 Run the test suite:
 
 ```shell
@@ -138,6 +146,25 @@ Initialize a local SQLite database:
 
 ```shell
 alertmanager-report-manager init-db data/alerts.db
+```
+
+Run the local API server after installing the `web` optional dependencies:
+
+```shell
+python -m uvicorn alertmanager_report_manager.web:app --reload
+```
+
+By default, the API initializes and writes to `data/alerts.db`. Override the database path with:
+
+```shell
+ALERTMANAGER_REPORT_MANAGER_DATABASE=/path/to/alerts.db \
+  python -m uvicorn alertmanager_report_manager.web:app --reload
+```
+
+The Alertmanager webhook endpoint is available at:
+
+```text
+POST /webhooks/alertmanager
 ```
 
 Build the runtime container image:
